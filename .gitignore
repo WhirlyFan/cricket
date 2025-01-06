@@ -5,4 +5,4 @@ __pycache__/
 .vscode/
 *.db
 node_modules/
-```
+!.vscode/settings.json
