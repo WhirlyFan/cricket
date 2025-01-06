@@ -1,10 +1,10 @@
-import './App.less';
+import './App.css';
 
-import LoginForm from 'components/auth/LoginForm';
-import SignupForm from 'components/auth/SignupForm';
-import HomePage from 'components/HomePage';
-import Users from 'components/Users';
 import { Link, Route, Routes } from 'react-router-dom';
+import LoginForm from '@/components/auth/LoginForm';
+import SignupForm from '@/components/auth/SignupForm';
+import HomePage from '@/components/HomePage';
+import Users from '@/components/Users';
 
 function App() {
   return (

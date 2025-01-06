@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useLoginMutation } from 'app/apiSlice';
-import { ErrorType } from 'app/types';
+import { useLoginMutation } from '@/app/apiSlice';
+import { ErrorType } from '@/app/types';
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {

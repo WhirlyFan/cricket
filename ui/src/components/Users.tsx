@@ -1,4 +1,4 @@
-import { useGetUsersQuery } from 'app/apiSlice';
+import { useGetUsersQuery } from '@/app/apiSlice';
 
 type User = {
   id: number;
