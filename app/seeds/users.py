@@ -4,10 +4,10 @@ from app.models import db, User, is_production, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(username="Demo", email="demo@test.com", password="password")
-    marnie = User(username="Marnie", email="marnie@test.com", password="password")
-    bobbie = User(username="Bobbie", email="bobbie@test.com", password="password")
-    whirlyfan = User(username="Whirlyfan", email="whirly@test.com", password="password")
+    demo = User(username="Demo", email="demo@test.com", password="password", about_me="I am a demo user")
+    marnie = User(username="Marnie", email="marnie@test.com", password="password", about_me="I am a demo user")
+    bobbie = User(username="Bobbie", email="bobbie@test.com", password="password", about_me="I am a demo user")
+    whirlyfan = User(username="Whirlyfan", email="whirly@test.com", password="password", about_me="I am a whirly user")
 
     db.session.add_all([demo, marnie, bobbie, whirlyfan])
 
