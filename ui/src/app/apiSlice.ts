@@ -17,10 +17,10 @@ export const apiSlice = createApi({
     getUsers: builder.query({
       // Based off the reducer path set above, the URL for the request is '/api/users'
       query: () => '/users',
-      providesTags: ['Users']
+      providesTags: ['Users'],
     }),
     getUser: builder.query({
-      query: (id) => `/users/${id}`
+      query: (id) => `/users/${id}`,
     }),
     getCurrentUser: builder.query({
       query: () => '/auth/session',
@@ -30,27 +30,27 @@ export const apiSlice = createApi({
       query: (user: User) => ({
         url: '/auth/signup',
         method: 'POST',
-        body: user
+        body: user,
       }),
-      invalidatesTags: (result) => (result ? ['CurrentUser'] : [])
+      invalidatesTags: (result) => (result ? ['CurrentUser'] : []),
     }),
     login: builder.mutation({
       query: (user: User) => ({
         url: '/auth/login',
         method: 'POST',
-        body: user
+        body: user,
       }),
-      invalidatesTags: (result) => (result ? ['CurrentUser'] : [])
+      invalidatesTags: (result) => (result ? ['CurrentUser'] : []),
     }),
     logout: builder.mutation({
       query: () => ({
         url: '/auth/logout',
-        method: 'POST'
+        method: 'POST',
       }),
       // Invalidate all tags that require a user to be logged in to view
-      invalidatesTags: (result) => (result ? ['CurrentUser', 'Users'] : [])
-    })
-  })
+      invalidatesTags: (result) => (result ? ['CurrentUser', 'Users'] : []),
+    }),
+  }),
 });
 
 // Export the auto-generated hook for the `getUsers` query endpoint
@@ -60,5 +60,5 @@ export const {
   useGetCurrentUserQuery,
   useSignupMutation,
   useLoginMutation,
-  useLogoutMutation
+  useLogoutMutation,
 } = apiSlice;

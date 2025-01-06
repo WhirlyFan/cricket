@@ -1,14 +1,14 @@
-import { useSignupMutation } from "app/apiSlice";
-import { ErrorType } from "app/types";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useSignupMutation } from 'app/apiSlice';
+import { ErrorType } from 'app/types';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const [signup] = useSignupMutation();
   const navigate = useNavigate();
 
@@ -17,14 +17,14 @@ const SignUpForm = () => {
       try {
         await signup({ username, email, password }).unwrap();
         setErrors([]);
-        navigate("/");
+        navigate('/');
       } catch (e) {
         const error = e as ErrorType;
         setErrors(error.data.errors);
       }
     } else {
       // @ts-expect-error ts(2322) FIXME: Type 'string' is not assignable to type 'never'.ts(2322
-      setErrors(["Passwords do not match"]);
+      setErrors(['Passwords do not match']);
     }
   };
 
@@ -46,41 +46,29 @@ const SignUpForm = () => {
       >
         <label>
           Username:
-          <input
-            type='text'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
         <br />
         <label>
           Email:
-          <input
-            type='email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
         <br />
         <label>
           Password:
-          <input
-            type='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <br />
         <label>
           Repeat Password:
           <input
-            type='password'
+            type="password"
             value={repeatPassword}
             onChange={(e) => setRepeatPassword(e.target.value)}
           />
         </label>
         <br />
-        <button type='submit'>Sign Up</button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );

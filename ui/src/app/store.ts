@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { apiSlice } from './apiSlice';
 import logger from 'redux-logger';
+import { apiSlice } from './apiSlice';
 
 const store = configureStore({
   reducer: {
-    [apiSlice.reducerPath]: apiSlice.reducer
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => {
     if (import.meta.env.MODE !== 'production') {
@@ -12,7 +12,7 @@ const store = configureStore({
     }
     return getDefaultMiddleware().concat(apiSlice.middleware);
   },
-  devTools: import.meta.env.MODE !== 'production'
+  devTools: import.meta.env.MODE !== 'production',
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

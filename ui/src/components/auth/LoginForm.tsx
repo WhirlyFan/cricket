@@ -1,13 +1,13 @@
-import { useLoginMutation } from "app/apiSlice";
-import { ErrorType } from "app/types";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useLoginMutation } from 'app/apiSlice';
+import { ErrorType } from 'app/types';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {
   const navigate = useNavigate();
   const [login] = useLoginMutation();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +22,7 @@ export default function LoginForm() {
     try {
       await login({ email, password }).unwrap();
       setErrors([]);
-      navigate("/")
+      navigate('/');
     } catch (e) {
       const error = e as ErrorType;
       setErrors(error.data.errors);
@@ -37,28 +37,18 @@ export default function LoginForm() {
       }}
     >
       <h1>Login</h1>
-      <div>
-        {errors?.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <label htmlFor='email'>Email</label>
+      <div>{errors?.map((error) => <div>{error}</div>)}</div>
+      <label htmlFor="email">Email</label>
+      <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} />
+      <label htmlFor="password">Password</label>
       <input
-        type='email'
-        id='email'
-        name='email'
-        value={email}
-        onChange={handleEmailChange}
-      />
-      <label htmlFor='password'>Password</label>
-      <input
-        type='password'
-        id='password'
-        name='password'
+        type="password"
+        id="password"
+        name="password"
         value={password}
         onChange={handlePasswordChange}
       />
-      <button type='submit'>Login</button>
+      <button type="submit">Login</button>
       <button>Signup</button>
     </form>
   );
