@@ -7,11 +7,8 @@ import tseslint from 'typescript-eslint';
 export default [
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-    rules: {
-      'react/react-in-jsx-scope': 'off', // Disable React in scope rule for JSX runtime
-      'react/jsx-uses-react': 'off', // Disable React usage rule for JSX runtime    },
-    },
     settings: {
+      // for eslint-plugin-react to auto detect react version
       react: {
         version: 'detect',
       },
@@ -21,4 +18,12 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  {
+    rules: {
+      // set of custom rules
+      'no-console': 'warn',
+      'react/button-has-type': 'error',
+      'react/react-in-jsx-scope': ['off'],
+    },
+  },
 ];

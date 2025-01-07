@@ -1,15 +1,19 @@
 import './App.css';
 
+import { Button } from '@nextui-org/react';
 import { Link, Route, Routes } from 'react-router-dom';
 import LoginForm from '@/components/auth/LoginForm';
 import SignupForm from '@/components/auth/SignupForm';
 import HomePage from '@/components/HomePage';
 import Users from '@/components/Users';
+import { Button as ShadButton } from './components/ui/button';
 
 function App() {
   return (
     <>
       <nav>
+        <Button>Click me</Button>
+        <ShadButton>Click Me</ShadButton>
         <ul>
           <li>
             <Link to="/">Home</Link>

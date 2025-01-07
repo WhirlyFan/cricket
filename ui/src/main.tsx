@@ -1,20 +1,22 @@
 import React from 'react';
+import { NextUIProvider } from '@nextui-org/react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
+import App from './App.js';
 
 import './index.css';
 
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import store from '@/app/store.ts';
+import store from './app/store.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    {/* TODO: Look into replacing Provider with ApiProvider from rtk query if it makes sense */}
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <NextUIProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </NextUIProvider>
   </React.StrictMode>
 );
