@@ -11,3 +11,7 @@ export interface ErrorType {
     status: number;
   };
 }
+
+export type builder {
+  
+}

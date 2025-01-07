@@ -1,4 +1,4 @@
-import { useGetCurrentUserQuery, useLogoutMutation } from '@/app/apiSlice';
+import { useGetCurrentUserQuery, useLogoutMutation } from '@/api/apiSlice';
 
 export default function HomePage() {
   const { data, isLoading, isError } = useGetCurrentUserQuery({});

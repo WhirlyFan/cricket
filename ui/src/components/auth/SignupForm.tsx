@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSignupMutation } from '@/app/apiSlice';
-import { ErrorType } from '@/app/types';
+import { useSignupMutation } from '@/api/apiSlice';
+import { ErrorType } from '@/utils/types';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
