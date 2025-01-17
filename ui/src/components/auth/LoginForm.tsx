@@ -37,7 +37,7 @@ export default function LoginForm() {
       }}
     >
       <h1>Login</h1>
-      <div>{errors?.map((error) => <div>{error}</div>)}</div>
+      <div>{errors?.map((error) => <div key={error}>{error}</div>)}</div>
       <label htmlFor="email">Email</label>
       <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} />
       <label htmlFor="password">Password</label>
@@ -49,7 +49,7 @@ export default function LoginForm() {
         onChange={handlePasswordChange}
       />
       <button type="submit">Login</button>
-      <button>Signup</button>
+      <button type="button">Signup</button>
     </form>
   );
 }

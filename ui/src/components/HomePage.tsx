@@ -16,6 +16,7 @@ export default function HomePage() {
           <h2>Welcome, {currentUser.username}</h2>
           <p>Your email is: {currentUser.email}</p>
           <button
+            type="button"
             onClick={() => {
               logout({});
             }}
