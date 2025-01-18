@@ -1,6 +1,7 @@
-import { ModeToggle } from '@/components/ui/mode-toggle';
 import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/react';
 import { Link } from 'react-router-dom';
+import { useGetCurrentUserQuery, useLogoutMutation } from '@/api/apiSlice';
+import { ModeToggle } from '@/components/ui/mode-toggle';
 
 export const CricketLogo = () => {
   return (
@@ -14,6 +15,14 @@ export const CricketLogo = () => {
 };
 
 export default function NavBar() {
+  const { data } = useGetCurrentUserQuery({});
+  const [logout] = useLogoutMutation();
+  const user = data?.user;
+
+  const handleLogout = () => {
+    logout({});
+  };
+
   return (
     <Navbar shouldHideOnScroll isBordered>
       <NavbarBrand>
@@ -41,7 +50,15 @@ export default function NavBar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link to="/login">Login</Link>
+          {user ? (
+            <Button as={Link} color="primary" onPress={handleLogout}>
+              Logout
+            </Button>
+          ) : (
+            <Button as={Link} color="primary" to="/login">
+              Login
+            </Button>
+          )}
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="primary" to="/signup" variant="flat">
