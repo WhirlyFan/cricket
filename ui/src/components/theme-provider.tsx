@@ -33,18 +33,17 @@ export function ThemeProvider({
   useEffect(() => {
     const root = window.document.documentElement;
 
-    root.classList.remove('light', 'dark');
+    // Remove existing theme classes
+    root.classList.remove('light', 'dark', 'bg-background', 'text-foreground');
 
+    // Determine theme based on system preference or explicitly set theme
+    let appliedTheme = theme;
     if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-
-      root.classList.add(systemTheme);
-      return;
+      appliedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
-    root.classList.add(theme);
+    // Add theme and utility classes
+    root.classList.add(appliedTheme, 'bg-background', 'text-foreground');
   }, [theme]);
 
   const value = {
