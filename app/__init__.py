@@ -60,7 +60,7 @@ def inject_csrf_token(response):
         'csrf_token',
         generate_csrf(),
         secure=is_production,
-        samesite='Strict' if is_production else None,
+        samesite='Strict' if is_production else 'Lax',
         httponly=True)
     return response
 
