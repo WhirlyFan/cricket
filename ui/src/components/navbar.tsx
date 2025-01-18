@@ -1,4 +1,4 @@
-import DarkModeSwitch from '@/components/ui/mode-toggle';
+import { ModeToggle } from '@/components/ui/mode-toggle';
 import { Button, Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/react';
 import { Link } from 'react-router-dom';
 
@@ -49,7 +49,7 @@ export default function NavBar() {
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <DarkModeSwitch />
+          <ModeToggle />
         </NavbarItem>
       </NavbarContent>
     </Navbar>
